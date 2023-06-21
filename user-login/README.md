@@ -1,18 +1,8 @@
-# Vue 3 + TypeScript + Vite
+# 用户中心项目功能
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+-- 包括注册，登录，个人中心 3 个功能模块
+-- 用户包括以下信息：用户名称，账号名称，密码，密码重复，邮箱，手机，身份证，出生日期，性别
+-- 注册时需要对用户信息进行非空校验和格式校验，两次密码一致性校验，表单提交需要注意防重复提交
+-- 登录时需要有验证码，需要对验证码正确性进行校验，验证码校验失败自动更新验证码，提供手动更新验证码操作
+-- 登录成功展示个人中心，提供修改个人信息操作，退出操作，修改密码操作
+-- 附加：个人中心提供头像以及修改头像功能
