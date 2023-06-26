@@ -22,10 +22,17 @@ export default defineConfig({
   ],
   server: {
     https: true,
+    proxy: {
+      '/test': {
+        target: 'http://172.18.3.163:3000/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/test/, ''),
+      },
+    },
   },
   resolve: {
     alias: {
-      '@v': 'src/views',
+      '@v': '/src/views',
     },
   },
 })
