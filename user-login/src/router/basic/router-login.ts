@@ -12,7 +12,7 @@ const Login: RouteRecordRaw = {
 }
 const Reg: RouteRecordRaw = {
   path: '/reg',
-  component: () => import('@v/login/Reg.vue'),
+  component: () => import('@v/login/Login.vue'),
   meta: {
     pageTitle: '注册',
   },
