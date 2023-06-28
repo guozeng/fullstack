@@ -46,6 +46,7 @@ import { useRoute } from 'vue-router'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
+import JSEncrypt from 'jsencrypt'
 
 import { useMyFetch } from '@u/index'
 
@@ -106,6 +107,12 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
       return
     }
     saveLoading.value = true
+    // 获取公钥
+    const { data: keyData } = await useMyFetch('common/getPublicKey').get().json()
+    console.log(keyData.value.data)
+    const encryptor = new JSEncrypt()
+    encryptor.setPublicKey(keyData.value.data)
+
     const mapApi = {
       reg: 'users/add',
       login: 'users/login',
@@ -114,7 +121,7 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
       .post({
         data: {
           account,
-          password,
+          password: encryptor.encrypt(password),
         },
       })
       .json()

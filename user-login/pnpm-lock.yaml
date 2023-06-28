@@ -5,6 +5,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.1.0
   '@vueuse/core': ^10.2.0
   element-plus: ^2.3.7
+  jsencrypt: ^3.3.2
   nodemon: ^2.0.22
   prettier: ^2.8.8
   typescript: ^5.0.2
@@ -21,6 +22,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 10.2.0_vue@3.3.4
   element-plus: 2.3.7_vue@3.3.4
+  jsencrypt: 3.3.2
   vue: 3.3.4
   vue-router: 4.2.2_vue@3.3.4
 
@@ -1014,6 +1016,10 @@ packages:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
     dev: true
+
+  /jsencrypt/3.3.2:
+    resolution: {integrity: sha512-arQR1R1ESGdAxY7ZheWr12wCaF2yF47v5qpB76TtV64H1pyGudk9Hvw8Y9tb/FiTIaaTRUyaSnm5T/Y53Ghm/A==}
+    dev: false
 
   /jsonc-parser/3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
