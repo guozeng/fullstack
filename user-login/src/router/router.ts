@@ -1,7 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { Login } from './basic/router-login'
+import Logins from './basic/router-login'
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
-  routes: [Login],
+  routes: [...Logins],
 })
+
+router.afterEach((to, failure) => {
+  if (failure) {
+    // console.error(failure)
+  }
+  const title = useTitle()
+  title.value = to.meta.pageTitle as string
+})
+
+export default router

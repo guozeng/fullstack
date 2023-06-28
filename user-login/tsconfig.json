@@ -22,7 +22,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@v/*": ["src/views/*"]
+      "@v/*": ["src/views/*"],
+      "@u/*": ["src/utils/*"]
     },
     "types": ["element-plus/global"]
   },

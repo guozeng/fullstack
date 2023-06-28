@@ -5,7 +5,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import WindiCSS from 'vite-plugin-windicss'
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -14,7 +13,6 @@ export default defineConfig({
     AutoImport({
       imports: ['vue', '@vueuse/core'],
       resolvers: [ElementPlusResolver()],
-      dirs: ['./utils/**'],
       vueTemplate: true,
     }),
     Components({
@@ -35,6 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@v': '/src/views',
+      '@u': '/src/utils',
     },
   },
 })
