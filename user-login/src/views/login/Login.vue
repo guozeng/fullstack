@@ -1,5 +1,5 @@
 <template>
-  <div class="w-500px border m-auto mt-100px p-30px">
+  <div class="w-500px border m-auto mt-100px p-30px rounded shadow">
     <h1 class="text-center mb-30px text-30px">
       <span v-if="loginOrReg === EPageType.reg">用户注册</span>
       <span v-if="loginOrReg === EPageType.login">用户登录</span>
@@ -37,11 +37,13 @@
       >
         {{ saveLoading ? '登录中...' : '登录' }}
       </el-button>
+      <el-button v-if="loginOrReg === EPageType.login" link @click="$router.replace('/reg')">去注册</el-button>
+      <el-button v-if="loginOrReg === EPageType.reg" link @click="$router.replace('/login')">去登录</el-button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
@@ -72,6 +74,7 @@ const rules = reactive<FormRules<IFormData>>({
 })
 const saveLoading = ref(false)
 const route = useRoute()
+const router = useRouter()
 const loginOrReg = ref<EPageType>()
 
 watch(
@@ -132,6 +135,12 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
     const { data: isSuccess, msg } = data.value
     if (isSuccess) {
       ElMessage.success(msg)
+      if (loginOrReg === EPageType.login) {
+        router.replace('/home')
+      }
+      if (loginOrReg === EPageType.reg) {
+        router.replace('/login')
+      }
     } else {
       ElMessage.error(msg)
     }
