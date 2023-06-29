@@ -109,7 +109,6 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
     saveLoading.value = true
     // 获取公钥
     const { data: keyData } = await useMyFetch('common/getPublicKey').get().json()
-    console.log(keyData.value.data)
     const encryptor = new JSEncrypt()
     encryptor.setPublicKey(keyData.value.data)
 
@@ -127,13 +126,14 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
       .json()
     saveLoading.value = false
     if (error.value) {
-      ElMessage.error('网络错误，请检查网络后重试')
+      ElMessage.error('请求错误')
       return
     }
-    if (data.value && data.value.code === 200) {
-      ElMessage.success(data.value.msg)
+    const { data: isSuccess, msg } = data.value
+    if (isSuccess) {
+      ElMessage.success(msg)
     } else {
-      ElMessage.error(data.value?.msg || '服务错误')
+      ElMessage.error(msg)
     }
   }
 }
