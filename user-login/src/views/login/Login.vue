@@ -116,7 +116,7 @@ async function handleSubmit(formEl: FormInstance | undefined, loginOrReg: EPageT
     encryptor.setPublicKey(keyData.value.data)
 
     const mapApi = {
-      reg: 'users/add',
+      reg: 'users/reg',
       login: 'users/login',
     }
     const { error, data } = await useMyFetch(mapApi[loginOrReg])
