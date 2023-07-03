@@ -13,5 +13,6 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WelTable: typeof import('./src/components/wel-table/wel-table.vue')['default']
   }
 }

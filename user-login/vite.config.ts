@@ -16,6 +16,7 @@ export default defineConfig({
       vueTemplate: true,
     }),
     Components({
+      dirs: ['src/components'],
       resolvers: [ElementPlusResolver()],
     }),
     WindiCSS(),
