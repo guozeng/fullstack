@@ -14,11 +14,13 @@
     "@vueuse/core": "^10.2.0",
     "element-plus": "^2.3.7",
     "jsencrypt": "^3.3.2",
+    "qs": "^6.11.2",
     "vue": "^3.2.47",
     "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
+    "@types/qs": "^6.9.7",
     "@vitejs/plugin-vue": "^4.1.0",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.8",

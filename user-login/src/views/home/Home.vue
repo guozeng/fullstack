@@ -4,12 +4,12 @@
 </template>
 <script setup lang="ts">
 async function req() {
-  const { error, data } = await useMyFetch(`users/getDetailByAccount`).get().json()
-  if (error.value) {
-    ElMessage.error('请求错误')
-  } else {
-    console.log(data.value)
-  }
+  const { data } = await ajax('users/getDetailByAccount', {
+    data: {
+      a: 1,
+    },
+  })
+  console.log(data.value)
 }
 req()
 </script>

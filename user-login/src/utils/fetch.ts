@@ -10,6 +10,7 @@ const useMyFetch = createFetch({
       // options.headers.Authorization = `Bearer ${myToken}`
       return { options }
     },
+    timeout: 10000,
   },
 })
 enum MethodTypes {
@@ -20,23 +21,46 @@ enum MethodTypes {
 }
 interface IAjaxConfig {
   data?: Record<string, any>
-  method: MethodTypes
+  method?: keyof typeof MethodTypes
 }
 async function ajax(
   url: string,
-  config: IAjaxConfig = {
-    method: MethodTypes.GET,
-  }
+  config?: IAjaxConfig
 ) {
-  if (config.data && config.method !== MethodTypes.POST) {
+  config = config || {}
+  config.method = config.method || 'GET'
+
+  let params = undefined
+  if (config.data && config.method !== 'POST') {
     url = `${url}&${stringify(config.data)}`
+  } else {
+    params = config.data
   }
-  const { isFetching, error, data } = await useMyFetch(url)[config.method]().json()
+  const method = config.method
+  let val
+  switch (method) {
+    case 'GET':
+      val = await useMyFetch(url).get().json()
+      break;
+    case 'POST':
+      val = await useMyFetch(url).post(config.data || {}).json()
+      break;
+    case 'DELETE':
+      val = await useMyFetch(url).delete().json()
+      break;
+    case 'PUT':
+      val = await useMyFetch(url).put().json()
+      break;
+    default:
+      val = await useMyFetch(url).get().json();
+  }
+  const { isFetching, error, data } = val
   if (error.value) {
-    ElMessage.error('请求错误')
+    ElMessage.error('服务不可用')
   }
   return {
     isFetching,
+    error,
     data,
   }
 }
