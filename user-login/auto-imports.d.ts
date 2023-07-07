@@ -5,6 +5,7 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const ElMessage: typeof import('./src/utils/el-msg')['ElMessage']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
@@ -190,6 +191,7 @@ declare global {
   const useMouseInElement: typeof import('@vueuse/core')['useMouseInElement']
   const useMousePressed: typeof import('@vueuse/core')['useMousePressed']
   const useMutationObserver: typeof import('@vueuse/core')['useMutationObserver']
+  const useMyFetch: typeof import('./src/utils/fetch')['useMyFetch']
   const useNavigatorLanguage: typeof import('@vueuse/core')['useNavigatorLanguage']
   const useNetwork: typeof import('@vueuse/core')['useNetwork']
   const useNow: typeof import('@vueuse/core')['useNow']
@@ -290,6 +292,7 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ElMessage: UnwrapRef<typeof import('./src/utils/el-msg')['ElMessage']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -331,6 +334,8 @@ declare module 'vue' {
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
+    readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
+    readonly onBeforeRouteUpdate: UnwrapRef<typeof import('vue-router')['onBeforeRouteUpdate']>
     readonly onBeforeUnmount: UnwrapRef<typeof import('vue')['onBeforeUnmount']>
     readonly onBeforeUpdate: UnwrapRef<typeof import('vue')['onBeforeUpdate']>
     readonly onClickOutside: UnwrapRef<typeof import('@vueuse/core')['onClickOutside']>
@@ -460,6 +465,7 @@ declare module 'vue' {
     readonly useIntervalFn: UnwrapRef<typeof import('@vueuse/core')['useIntervalFn']>
     readonly useKeyModifier: UnwrapRef<typeof import('@vueuse/core')['useKeyModifier']>
     readonly useLastChanged: UnwrapRef<typeof import('@vueuse/core')['useLastChanged']>
+    readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLocalStorage: UnwrapRef<typeof import('@vueuse/core')['useLocalStorage']>
     readonly useMagicKeys: UnwrapRef<typeof import('@vueuse/core')['useMagicKeys']>
     readonly useManualRefHistory: UnwrapRef<typeof import('@vueuse/core')['useManualRefHistory']>
@@ -472,6 +478,7 @@ declare module 'vue' {
     readonly useMouseInElement: UnwrapRef<typeof import('@vueuse/core')['useMouseInElement']>
     readonly useMousePressed: UnwrapRef<typeof import('@vueuse/core')['useMousePressed']>
     readonly useMutationObserver: UnwrapRef<typeof import('@vueuse/core')['useMutationObserver']>
+    readonly useMyFetch: UnwrapRef<typeof import('./src/utils/fetch')['useMyFetch']>
     readonly useNavigatorLanguage: UnwrapRef<typeof import('@vueuse/core')['useNavigatorLanguage']>
     readonly useNetwork: UnwrapRef<typeof import('@vueuse/core')['useNetwork']>
     readonly useNow: UnwrapRef<typeof import('@vueuse/core')['useNow']>
@@ -495,6 +502,8 @@ declare module 'vue' {
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
     readonly useRefHistory: UnwrapRef<typeof import('@vueuse/core')['useRefHistory']>
     readonly useResizeObserver: UnwrapRef<typeof import('@vueuse/core')['useResizeObserver']>
+    readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
+    readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useScreenOrientation: UnwrapRef<typeof import('@vueuse/core')['useScreenOrientation']>
     readonly useScreenSafeArea: UnwrapRef<typeof import('@vueuse/core')['useScreenSafeArea']>
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>
@@ -564,6 +573,7 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly ElMessage: UnwrapRef<typeof import('./src/utils/el-msg')['ElMessage']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -605,6 +615,8 @@ declare module '@vue/runtime-core' {
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
+    readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
+    readonly onBeforeRouteUpdate: UnwrapRef<typeof import('vue-router')['onBeforeRouteUpdate']>
     readonly onBeforeUnmount: UnwrapRef<typeof import('vue')['onBeforeUnmount']>
     readonly onBeforeUpdate: UnwrapRef<typeof import('vue')['onBeforeUpdate']>
     readonly onClickOutside: UnwrapRef<typeof import('@vueuse/core')['onClickOutside']>
@@ -734,6 +746,7 @@ declare module '@vue/runtime-core' {
     readonly useIntervalFn: UnwrapRef<typeof import('@vueuse/core')['useIntervalFn']>
     readonly useKeyModifier: UnwrapRef<typeof import('@vueuse/core')['useKeyModifier']>
     readonly useLastChanged: UnwrapRef<typeof import('@vueuse/core')['useLastChanged']>
+    readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLocalStorage: UnwrapRef<typeof import('@vueuse/core')['useLocalStorage']>
     readonly useMagicKeys: UnwrapRef<typeof import('@vueuse/core')['useMagicKeys']>
     readonly useManualRefHistory: UnwrapRef<typeof import('@vueuse/core')['useManualRefHistory']>
@@ -746,6 +759,7 @@ declare module '@vue/runtime-core' {
     readonly useMouseInElement: UnwrapRef<typeof import('@vueuse/core')['useMouseInElement']>
     readonly useMousePressed: UnwrapRef<typeof import('@vueuse/core')['useMousePressed']>
     readonly useMutationObserver: UnwrapRef<typeof import('@vueuse/core')['useMutationObserver']>
+    readonly useMyFetch: UnwrapRef<typeof import('./src/utils/fetch')['useMyFetch']>
     readonly useNavigatorLanguage: UnwrapRef<typeof import('@vueuse/core')['useNavigatorLanguage']>
     readonly useNetwork: UnwrapRef<typeof import('@vueuse/core')['useNetwork']>
     readonly useNow: UnwrapRef<typeof import('@vueuse/core')['useNow']>
@@ -769,6 +783,8 @@ declare module '@vue/runtime-core' {
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
     readonly useRefHistory: UnwrapRef<typeof import('@vueuse/core')['useRefHistory']>
     readonly useResizeObserver: UnwrapRef<typeof import('@vueuse/core')['useResizeObserver']>
+    readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
+    readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useScreenOrientation: UnwrapRef<typeof import('@vueuse/core')['useScreenOrientation']>
     readonly useScreenSafeArea: UnwrapRef<typeof import('@vueuse/core')['useScreenSafeArea']>
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>

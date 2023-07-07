@@ -43,14 +43,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-
 import type { FormInstance, FormRules } from 'element-plus'
-import { ElMessage } from 'element-plus'
-import 'element-plus/theme-chalk/el-message.css'
 import JSEncrypt from 'jsencrypt'
-
-import { useMyFetch } from '@u/index'
 
 interface IFormData {
   account: string

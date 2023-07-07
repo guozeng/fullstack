@@ -3,10 +3,6 @@
   <wel-table></wel-table>
 </template>
 <script setup lang="ts">
-import { useMyFetch } from '@u/index'
-import { ElMessage } from 'element-plus'
-import 'element-plus/theme-chalk/el-message.css'
-
 async function req() {
   const { error, data } = await useMyFetch(`users/getDetailByAccount`).get().json()
   if (error.value) {

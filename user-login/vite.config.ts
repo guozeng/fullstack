@@ -11,9 +11,10 @@ export default defineConfig({
     vue(),
     mkcert(),
     AutoImport({
-      imports: ['vue', '@vueuse/core'],
+      imports: ['vue', '@vueuse/core', 'vue-router'],
       resolvers: [ElementPlusResolver()],
       vueTemplate: true,
+      dirs: ['./src/utils'],
     }),
     Components({
       dirs: ['src/components'],
@@ -34,7 +35,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@v': '/src/views',
-      '@u': '/src/utils',
     },
   },
 })
